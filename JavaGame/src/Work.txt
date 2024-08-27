@@ -1,3 +1,4 @@
 FindBottle 0-20
 FindMetal 0-300
-FightUnderBridge 500-10000, Power 5
+FightUnderBridge 200-10000, Power 5
+DistributeLeaflets 1000-2500, Neatness 10

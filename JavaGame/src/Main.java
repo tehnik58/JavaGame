@@ -7,8 +7,8 @@ import java.io.Console;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        System.out.println("---------------------------JavaGameSurvival---------------------------");
         Game game = new Game();
-        System.out.println(Parser.GetWorkList()[2]);
         game.Start();
     }
 }
