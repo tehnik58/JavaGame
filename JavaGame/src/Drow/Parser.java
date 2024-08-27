@@ -106,7 +106,6 @@ public class Parser {
                 line = reader.readLine();
             }
             reader.close();
-            Works = new String[WorkList.size()];
             Works = WorkList.toArray(new String[0]);
 
             return Works;
@@ -117,9 +116,30 @@ public class Parser {
         return null;
     }
 
+    public static String[] GetWorkSalarys(String Name){
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader("src/Work.txt"));
+            String line = reader.readLine();
+
+            while (line != null) {
+                String[] ArrayLine = line.split(", ");
+                if (ArrayLine[0].split(" ")[0].equals(Name))
+                {
+                    return new String[]{ArrayLine[0].split(" ")[0], ArrayLine[0].split(" ")[1]};
+                }
+                line = reader.readLine();
+            }
+            reader.close();
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        return new String[]{"null", "null"};
+    }
+
     //0 index - Сondition Name
     //1 index - Сondition Score
-    public static String[] GetСondition(String Name){
+    public static String[] GetWorkСondition(String Name){
         try{
             BufferedReader reader = new BufferedReader(new FileReader("src/Work.txt"));
             String line = reader.readLine();
