@@ -18,52 +18,59 @@ enum WeeksDay{
     None
 }
 
+
 class Home{
-    String ActualHome = "None";
-    Integer PowerLessOnNight = 0;
-    WeeksDay BuyDay = WeeksDay.None;
+    private String ActualHome = "None";
+    private Integer PowerLessOnNight = 0;
+    private WeeksDay BuyDay = WeeksDay.None;
 
     public String ToString(){
-     return "Home: " + ActualHome + ", Buy Day: " + ActualHome;
+        return "Home: " + ActualHome + ", Buy Day: " + ActualHome;
     }
 
     public Boolean IsBuyDay(WeeksDay day){
         return day == BuyDay;
     }
 
-    public void SwitchHome(String name){
+    public void SwitchHome(String name, WeeksDay day){
         PowerLessOnNight = Integer.valueOf(Objects.requireNonNull(Parser.GetHomeParanetrsList(ActualHome))[2]);
+        ActualHome = name;
+        BuyDay = day;
     }
 }
 
 public class Game {
-    Drow.UIController UIController;
-    IGameInput Input;
+    public Boolean Game;
 
-    Integer Score = 0;
+    private Drow.UIController UIController;
+    private IGameInput Input;
 
-    WeeksDay Day = WeeksDay.Mo;
-    Booser player;
+    public Integer Score = 0;
+
+    private WeeksDay Day = WeeksDay.Mo;
+    private Booser Player;
+    private Home Home;
 
     public Game(){
         UIController = new UIController();
         Input = new GameInputConsole();
+        Game = true;
     }
 
     private void GameLoop(){
-        while(player.IsLive){
-            Day = WeeksDay.values()[(int) (player.Adge % 7.0)];
+        while(Player.IsLive){
+            Player.Adge++;
+            Day = WeeksDay.values()[(int) (Player.Adge % 7.0)];
 
             UIController.DrowWork();
 
-            player.LiveTest();
-            player.Adge++;
+            Player.LiveTest();
             break;
         }
     }
 
     public void Start(){
-        player = new Booser();
+        Player = new Booser();
         GameLoop();
     }
 }
