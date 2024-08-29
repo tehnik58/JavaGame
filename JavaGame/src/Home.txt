@@ -1,0 +1,4 @@
+None 0 6
+Box 10 5
+ArendaGarage 3000 3
+ArendaRoom 5000 2
